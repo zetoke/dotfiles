@@ -1,0 +1,7 @@
+feh --bg-scale /mnt/data/Images/wallpaper-87710.jpg &
+MODKEY=Mod4
+export WMII_TERM=urxvt
+export WMII_FONT='xft:Droid Sans Mono Slashed:size=8'
+#WMII_FOCUSCOLORS=('#EEEEEE' '#005577' '#006699')
+#WMII_BACKGROUND='#111111'
+#WMII_NORMCOLORS=('#BBBBBB' '#222222' '#000000')
