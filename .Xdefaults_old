@@ -1,0 +1,56 @@
+!------------------------------------------------------------------------------
+! c o l o r -  s e t t i n g s
+
+!*background: #2C2C2C
+!*foreground: #2C2C2C
+
+!    Urxvt Colours
+!
+! Black
+*color0:      #131212
+*color8:      #474747
+! Red 
+*color1:      #9f6767
+*color9:      #9f6767
+! Green
+*color2:      #299E1B
+*color10:     #77E768
+! Yellow
+*color3:      #96833F
+*color11:     #D0B249
+! Blue
+*color4:      #2467AD
+*color12:     #6B90EE
+! Purple
+*color5:      #655272
+*color13:     #9F75BA
+! Cyan
+*color6:      #92B19E
+*color14:     #A1CDCD
+! White
+*color7:      #FFFFFF
+*color15:     #97927C
+
+!------------------------------------------------------------------------------
+! u r x v t
+
+URxvt*termName: rxvt-256color
+
+URxvt.buffered:         true
+URxvt.background:       #2C2C2C
+URxvt.foreground:       #DCDCCD
+URxvt.cursorColor:      green
+URxvt.underlineColor:   yellow 
+URxvt*font:            xft:Droid Sans Mono Slashed:size=9
+URxvt*urlLauncher:      google-chrome
+URxvt*scrollBar:        false
+URxvt*scrollBar_right:        true
+URxvt*scrollColor:        #000000
+
+
+Xft*dpi:		96
+Xft*antialias:		true
+Xft*hinting:		slight
+
+!-------------------------------------------------------------------------------
+Xcursor.theme: aero
