@@ -15,6 +15,14 @@ Xft*rgba: rgb
 !--[term name]--!
 URxvt*termName: rxvt-256color
 
+!------------------!
+! Clickable Links  !
+!------------------!
+URxvt.perl-ext-common: default,matcher,-option-popup,-selection-popup,-realine
+URxvt.urlLauncher: chromium-browser
+URxvt.matcher.button: 1
+URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
+
 !--[trans and fg/bg]--!
 URxvt*fadeColor: black
 URxvt*transparent: false
@@ -26,7 +34,7 @@ URxvt*borderless: 1
 
 !--[font]--! 
 !URxvt*font: -*-terminus-*-*-*-*-12-*-*-*-*-*-*-u
-URxvt*font:            xft:Droid Sans Mono Slashed:size=9
+URxvt*font:            xft:Droid Sans Mono Slashed:size=10
 
 !--[scrolling]--! 
 URxvt*scrollBar: false

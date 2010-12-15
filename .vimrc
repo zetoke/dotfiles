@@ -49,6 +49,8 @@ autocmd FileType PKGBUILD set expandtab shiftwidth=2 softtabstop=4
 " sh stuff
 autocmd FileType sh set expandtab shiftwidth=2 softtabstop=4 
 
+" C++ stuff
+
 " LaTeX
 autocmd Filetype tex,latex set grepprg=grep\ -nH\ $
 autocmd Filetype tex,latex let g:tex_flavor = "latex"

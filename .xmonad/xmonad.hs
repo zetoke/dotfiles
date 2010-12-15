@@ -1,6 +1,7 @@
 -------------------------------------------------------------------------------
--- xmonad.hs for xmonad-darcs
+-- xmonad.hs for xmonad-darcs (works for "stable" xmonad at archlinux)
 -- Author: Øyvind 'Mr.Elendig' Heggstad <mrelendig AT har-ikkje DOT net>
+-- Dmitry 'Zetoke' Ermakov <zetoke AT ya DOT ru>
 -------------------------------------------------------------------------------
 -- Imports --
 -- stuff
@@ -54,7 +55,8 @@ manageHook' = composeAll [ isFullscreen             --> doFullFloat
                          , className =? "MPlayer"   --> doFloat
                          , className =? "Gimp"      --> doFloat
                          , className =? "Vlc"       --> doFloat
-			 , className =? "SMPlayer.Playlist" --> doFloat
+			 , className =? "Pidgin"    --> doFloat
+			 , className =? "Qutim"     --> doFloat
 			 , insertPosition Below Newer
 			 , transience'
                          ]
@@ -123,6 +125,8 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, xK_c     ), kill)
     , ((modMask .|. shiftMask, xK_i	), spawn "gajim")
     , ((modMask,               xK_c	), spawn "chromium-browser")
+    , ((modMask,               xK_w	), spawn "weechat-curses")
+    , ((modMask,               xK_Print ), spawn "/usr/bin/screenshot scr")
 
     -- grid
     , ((modMask,               xK_g     ), goToSelected defaultGSConfig)
