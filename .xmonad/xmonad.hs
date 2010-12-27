@@ -10,6 +10,9 @@ import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 import System.Exit
 
+-- Regex
+-- import Text.Regex.Posix ((=~))
+
 -- actions
 import XMonad.Actions.GridSelect
 
@@ -51,17 +54,19 @@ myConfig = defaultConfig { workspaces = workspaces'
 
 -------------------------------------------------------------------------------
 -- Window Management --
-manageHook' = composeAll [ isFullscreen             --> doFullFloat
-                         , className =? "MPlayer"   --> doFloat
-                         , className =? "Gimp"      --> doFloat
-                         , className =? "Vlc"       --> doFloat
-			 , className =? "Pidgin"    --> doFloat
-			 , className =? "Qutim"     --> doFloat
-			 , insertPosition Below Newer
-			 , transience'
-                         ]
-
-
+manageHook' = composeAll . concat $
+	[ [ isFullscreen		--> doFullFloat ]
+	, [ className	=? c 		--> doFloat | c <- myFloats ]
+	, [ className	=? r 		--> doIgnore | r <- myIgnores ]
+	, [ className	=? "Chrome" 	--> doShift "2:web" ]
+	, [ className	=? "Tkabber" 	--> doShift "3:im" ]
+	, [ insertPosition Below Newer ]
+	, [ transience' ]
+	]
+	where
+		
+		myFloats	= ["Toplevel", "MPlayer", "Gimp", "Pidgin", "Join group"]
+		myIgnores	= ["trayer"]
 -------------------------------------------------------------------------------
 -- Looks --
 -- bar
@@ -91,7 +96,7 @@ tabTheme1 = defaultTheme { decoHeight = 16
                          }
 
 -- workspaces
-workspaces' = ["1-main", "2-web", "3-im", "4-aud", "5-vid", "6", "7", "8", "9"]
+workspaces' = ["1:main", "2:web", "3:im", "4:aud", "5:vid", "6:mail", "7:off", "8", "9:tor"]
 
 -- layouts
 layoutHook' = tile ||| mtile ||| tab ||| full
@@ -123,7 +128,7 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, xK_p     ), spawn "gmrun")
     , ((modMask .|. shiftMask, xK_m     ), spawn "claws-mail")
     , ((modMask .|. shiftMask, xK_c     ), kill)
-    , ((modMask .|. shiftMask, xK_i	), spawn "gajim")
+    , ((modMask .|. shiftMask, xK_i	), spawn "tkabber")
     , ((modMask,               xK_c	), spawn "chromium-browser")
     , ((modMask,               xK_w	), spawn "weechat-curses")
     , ((modMask,               xK_Print ), spawn "/usr/bin/screenshot scr")
@@ -172,12 +177,12 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     [((m .|. modMask, k), windows $ f i)
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
-    ++
+    -- ++
     -- mod-[w,e] %! switch to twinview screen 1/2
     -- mod-shift-[w,e] %! move window to screen 1/2
-    [((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_w, xK_e] [0..]
-        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+    --[((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
+    --    | (key, sc) <- zip [xK_w, xK_e] [0..]
+    --    , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 -------------------------------------------------------------------------------
 
