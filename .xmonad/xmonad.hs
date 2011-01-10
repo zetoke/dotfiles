@@ -21,6 +21,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.UrgencyHook
 import XMonad.Hooks.InsertPosition
+import XMonad.Hooks.FloatNext
 
 -- layouts
 import XMonad.Layout.NoBorders
@@ -49,7 +50,7 @@ myConfig = defaultConfig { workspaces = workspaces'
                          , terminal = terminal'
                          , keys = keys'
                          , layoutHook = layoutHook'
-                         , manageHook = manageHook'
+                         , manageHook = floatNextHook <+> manageHook'
                          }
 
 -------------------------------------------------------------------------------
@@ -65,7 +66,7 @@ manageHook' = composeAll . concat $
 	]
 	where
 		
-		myFloats	= ["Toplevel", "MPlayer", "Gimp", "Pidgin", "Join group"]
+		myFloats	= ["Toplevel", "MPlayer", "Gimp", "Pidgin", "Skype", "Idjcgui.py", "Qjackctl"]
 		myIgnores	= ["trayer"]
 -------------------------------------------------------------------------------
 -- Looks --
@@ -167,10 +168,17 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, xK_l     ), sendMessage MirrorShrink)
     , ((modMask .|. shiftMask, xK_h     ), sendMessage MirrorExpand)
 
+    -- for skype
+    , ((modMask .|. shiftMask, xK_s	), spawn "amixer sset PCM toggle; amixer sset Side toggle")
+
     -- quit, or restart
     , ((modMask .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
     , ((modMask              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
+
+    -- floatNext
+    , ((modMask		     , xK_e	), toggleFloatAllNew)
     ]
+
     ++
     -- mod-[1..9] %! Switch to workspace N
     -- mod-shift-[1..9] %! Move client to workspace N
