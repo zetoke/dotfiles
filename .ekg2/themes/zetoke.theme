@@ -11,7 +11,8 @@ irc_joined %> %Y%2%n (%y%3%n) has joined %4\n
 jabber_muc_me_sent %) %|%G%3%n %4
 sent_me %) %|%G%4%n %3
 jabber_muc_recv2us %B<%r%5%3%B>%n %T%4
-jabber_muc_recv %B<%{3AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzYyBbMmPpCcGgYyBbMmPpCcGgYyBbMmPpCcGgYyBbMmPpCcGgYyGg}X%5%3%B>%n %4
+#jabber_muc_recv %B<%{3AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzYyBbMmPpCcGgYyBbMmPpCcGgYyBbMmPpCcGgYyBbMmPpCcGgYyGg}X%5%3%B>%n %4
+jabber_muc_recv %B<%w%X%5%{6BbrMmCcYyGgwBbrMmCcYyGgw}X%3%B>%n %4
 
 # Status colors
 status_avail %> (%3) %1 is %Gavailable%n
