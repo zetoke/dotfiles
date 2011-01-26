@@ -61,6 +61,7 @@ alias spmc="sudo pacman-color"
 alias pm="pacman"
 alias pmc="pacman-color"
 alias ya="yaourt"
+alias cave-update="cave resolve --reinstall-scm weekly --slots installed-or-best --recommendations display --continue-on-failure if-independent installed-packages"
 
 #------------------------------
 # Comp stuff
