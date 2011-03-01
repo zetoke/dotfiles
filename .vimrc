@@ -29,8 +29,9 @@ set statusline=%<%f\ %y%h%m%r\ PWD:%{getcwd()}%=%-14.(%l,%c%V%)\ %P
 set laststatus=2
 
 " colours
-"set t_Co=256
-colorscheme candycode
+set t_Co=256
+"colorscheme mirocookies
+colorscheme molokai
 
 
 " -[ FileTypes ]-
@@ -38,18 +39,16 @@ colorscheme candycode
 autocmd FileType mail,human set formatoptions+=t textwidth=72
 
 " Python stuff
-autocmd FileType python let python_highlight_all = 1
-autocmd FileType python let python_slow_sync = 1
-autocmd FileType python set expandtab shiftwidth=4 softtabstop=4 
-autocmd FileType python set completeopt=preview
+"autocmd FileType python let python_highlight_all = 1
+"autocmd FileType python let python_slow_sync = 1
+"autocmd FileType python set expandtab shiftwidth=4 softtabstop=4 
+"autocmd FileType python set completeopt=preview
 
 " PKGBUILD stuff
 autocmd FileType PKGBUILD set expandtab shiftwidth=2 softtabstop=4 
 
 " sh stuff
 autocmd FileType sh set expandtab shiftwidth=2 softtabstop=4 
-
-" C++ stuff
 
 " LaTeX
 autocmd Filetype tex,latex set grepprg=grep\ -nH\ $
@@ -66,7 +65,7 @@ inoremap <silent> <F9> <esc>:TlistUpdate<CR>a
 
 " -[ Plugins and Scripts ]-
 " taglist
-let Tlist_Use_Right_Window = 1
-let Tlist_Compart_Format = 1
-let Tlist_Show_Menu = 1
-let Tlist_Exit_OnlyWindow = 1
+"let Tlist_Use_Right_Window = 1
+"let Tlist_Compart_Format = 1
+"let Tlist_Show_Menu = 1
+"let Tlist_Exit_OnlyWindow = 1

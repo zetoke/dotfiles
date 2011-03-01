@@ -1,89 +1,81 @@
-!------------------!
-!       XFT        !
-!------------------!
 
-Xft*dpi: 96
-Xft*antialias: true
-Xft*hinting: true
-Xft*hintstyle: slight
-Xft*rgba: rgb
+!xft settings {
+!Xft.antialias: 	true
+!Xft.hinting:		true
+!Xft.hintstyle: 	hintslight
+!Xft.rgba:		none
+Xft.dpi:		96 
+!Xft.lcdfilter:		lcdnone
+!}
 
-!------------------!
-!   URvxt Stuff    !
-!------------------!
+!Cursor theme {
+Xcursor*theme:          aero
+Xcursor*size:           16
+!}
 
-!--[term name]--!
-URxvt*termName: rxvt-256color
+!URxvt Settings {
+URxvt*title:rxvt-unicode
+URxvt*iconName:urxvt
+URxvt*termName:rxvt-unicode
 
-!------------------!
-! Clickable Links  !
-!------------------!
-URxvt.perl-ext-common: default,matcher,-option-popup,-selection-popup,-realine
-URxvt.urlLauncher: chromium-browser
-URxvt.matcher.button: 1
-URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
+URxvt*geometry:98x28 
+URxvt*borderLess:false
+URxvt*externalBorder:1
+URxvt*internalBorder:0
 
-!--[trans and fg/bg]--!
-URxvt*fadeColor: black
-URxvt*transparent: false
-URxvt*shading: 80
-URxvt*depth:24
-URxvt*background: #000000
-URxvt*foreground: #C7C7C7
-URxvt*borderless: 1
+URxvt*visualBell:false
+URxvt*highlightSelection:True
+URxvt*buffered:true
+URxvt*saveLines:4000
 
-!--[font]--! 
-!URxvt*font: -*-terminus-*-*-*-*-12-*-*-*-*-*-*-u
-URxvt*font:            xft:Droid Sans Mono Slashed:size=10
+URxvt*perl-ext-common:matcher,selection,selection-autotransform,-searchable-scrollback,-readline
+URxvt.selection-autotransform.0: s/^([^:[:space:]]+):(\\d+):?$/vim +$2 \\Q$1\\E\\x0d/
+cutchars:"()*,<>[]{}|'"
+URxvt.matcher.button:1
+URxvt*urlLauncher:chromium
+URxvt.underlineURLs:true
+URxvt.perl-ext:url-select
+URxvt.keysym.M-u:perl:url-select:select_next
 
-!--[scrolling]--! 
-URxvt*scrollBar: false
-URxvt*saveLines: 10000
+URxvt*eightBitInput:true
+URxvt*inputMethod:SCIM
+URxvt*multichar_encoding:utf-8
+URxvt*preeditType:OverTheSpot,Root
+URxvt*imLocale:en_US.UTF-8
+!}
 
-!--[perl]--! 
-URxvt*perl-ext-common: default
+!Scroll and mousewheel {
+URxvt*jumpScroll:true
+URxvt*skipScroll:true
+URxvt*scrollBar:false
+URxvt*scrollBar_right:false
+URxvt*scrollstyle:plain
+URxvt*secondaryScroll:true 
+URxvt*scrollTtyOutput:false
+URxvt*scrollWithBuffer:true
+URxvt*scrollTtyKeypress:true
+URXvt*mouseWheelScrollPage:false
+!}
 
-!--[bell]--!
-URxvt*urgentOnBell: true
+!URxvt Fonts {
+!URxvt*font:			-*-terminus-medium-*-*-*-14-*-*-*-*-*-*-u
+!URxvt.boldFont:		-*-terminus-bold-*-*-*-14-*-*-*-*-*-*-u
+URxvt*font:			xft:Droid Sans Mono Slashed:pixelsize=14:normal
+!URxvt*font:			xft:Liberation Mono:pixelsize=14
+!}
 
-!--[cursor]--!
-URxvt*cursorBlink: false
+!URxvt Color Settings {
+! Color Scheme
+#include "/home/zetoke/.xcolors/librec00kiez"
+URxvt*depth:32
+URxvt*dynamicColors:on
 
-!--[Colours]--! 
-URxvt*cursorColor: #FFAF00
+URxvt*cursorColor:#888888
+URxvt*cursorBlink:true
+URxvt*cursorUnderline:false
+URxvt*pointerColor:gray
+URxvt*pointerColorBackground:black
+URxvt*pointerBlank:false
+URxvt*pointerBlankDelay:2
 
-! black
-URxvt*color0:  #000000
-URxvt*color8:  #999999
-
-! red
-URxvt*color1:  #BD484A
-URxvt*color9:  #F55D60
-
-! green
-URxvt*color2:  #66994E
-URxvt*color10: #93DB6F
-
-! yellow
-URxvt*color3:  #C4A043
-URxvt*color11: #F0C452
-
-! blue
-URxvt*color4:  #567B94
-URxvt*color12: #7CB2D6
-
-! magenta
-URxvt*color5:  #BB88DD
-URxvt*color13: #D7AFD7
-
-! cyan
-URxvt*color6:  #00BBDD
-URxvt*color14: #0DEBFF
-
-! white
-URxvt*color7:  #C7C7C7
-URxvt*color15: #D9D9D9
-
------------
-! cursor
-Xcursor.theme: aero
+! vim:nospell foldmethod=marker:foldmarker={,}:foldlevel=0
