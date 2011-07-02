@@ -59,14 +59,14 @@ manageHook' = composeAll . concat $
 	[ [ isFullscreen		--> doFullFloat ]
 	, [ className	=? c 		--> doFloat | c <- myFloats ]
 	, [ className	=? r 		--> doIgnore | r <- myIgnores ]
-	, [ className	=? "Chrome" 	--> doShift "2:web" ]
+	, [ className	=? "Chrome" 	--> doShift "1:www" ]
 	, [ className	=? "Tkabber" 	--> doShift "3:im" ]
 	, [ insertPosition Below Newer ]
 	, [ transience' ]
 	]
 	where
 		
-		myFloats	= ["Toplevel", "MPlayer", "Gimp", "Pidgin", "Skype", "Idjcgui.py", "Qjackctl"]
+		myFloats	= ["MPlayer", "Gimp", "Pidgin", "Skype", "Idjcgui.py", "Qjackctl"]
 		myIgnores	= ["trayer"]
 -------------------------------------------------------------------------------
 -- Looks --
@@ -97,7 +97,7 @@ tabTheme1 = defaultTheme { decoHeight = 16
                          }
 
 -- workspaces
-workspaces' = ["1:main", "2:web", "3:im", "4:aud", "5:vid", "6:mail", "7:off", "8", "9:tor"]
+workspaces' = ["1:www", "2:dev", "3:im", "4:aud", "5:vid", "6:mail", "7:off", "8", "9:tor"]
 
 -- layouts
 layoutHook' = tile ||| mtile ||| tab ||| full
@@ -130,7 +130,7 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, xK_m     ), spawn "claws-mail")
     , ((modMask .|. shiftMask, xK_c     ), kill)
     , ((modMask .|. shiftMask, xK_i	), spawn "tkabber")
-    , ((modMask,               xK_c	), spawn "chromium-browser")
+    , ((modMask,               xK_c	), spawn "chromium")
     , ((modMask,               xK_w	), spawn "weechat-curses")
     , ((modMask,               xK_Print ), spawn "/usr/bin/screenshot scr")
 
