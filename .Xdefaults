@@ -1,10 +1,10 @@
 
-!xft settings {
+!Xft settings {
 !Xft.antialias: 	true
 !Xft.hinting:		true
 !Xft.hintstyle: 	hintslight
 !Xft.rgba:		none
-Xft.dpi:		96 
+!Xft.dpi:		96 
 !Xft.lcdfilter:		lcdnone
 !}
 
@@ -58,24 +58,27 @@ URXvt*mouseWheelScrollPage:false
 !}
 
 !URxvt Fonts {
-!URxvt*font:			-*-terminus-medium-*-*-*-14-*-*-*-*-*-*-u
+!URxvt*font:			-*-terminus-medium-*-*-*-17-*-*-*-*-*-*-u
 !URxvt.boldFont:		-*-terminus-bold-*-*-*-14-*-*-*-*-*-*-u
-URxvt*font:			xft:Droid Sans Mono Slashed:pixelsize=14:normal
-!URxvt*font:			xft:Liberation Mono:pixelsize=14
+!URxvt*font:			xft:Droid Sans Mono:size=10
+!URxvt*font:            xft:Dejavu Sans Mono:size=10
+URxvt*font:			xft:Liberation Mono:pixelsize=14
 !}
 
 !URxvt Color Settings {
 ! Color Scheme
-#include "/home/zetoke/.xcolors/librec00kiez"
+!#include "/home/zetoke/.xcolors/librec00kiez"
+!#include "/home/zetoke/.xcolors/solarized_light"
+#include "/home/zetoke/.xcolors/solarized_dark"
 URxvt*depth:32
 URxvt*dynamicColors:on
 
-URxvt*cursorColor:#888888
-URxvt*cursorBlink:true
-URxvt*cursorUnderline:false
-URxvt*pointerColor:gray
-URxvt*pointerColorBackground:black
-URxvt*pointerBlank:false
-URxvt*pointerBlankDelay:2
+!URxvt*cursorColor:#888888
+!URxvt*cursorBlink:false
+!URxvt*cursorUnderline:false
+!URxvt*pointerColor:gray
+!URxvt*pointerColorBackground:black
+!URxvt*pointerBlank:false
+!URxvt*pointerBlankDelay:2
 
 ! vim:nospell foldmethod=marker:foldmarker={,}:foldlevel=0

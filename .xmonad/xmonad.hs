@@ -71,12 +71,12 @@ manageHook' = composeAll . concat $
 -------------------------------------------------------------------------------
 -- Looks --
 -- bar
-customPP = defaultPP { ppCurrent = xmobarColor "#429942" "" . wrap "<" ">"
-                     , ppHidden = xmobarColor "#C98F0A" ""
-                     , ppHiddenNoWindows = xmobarColor "#C9A34E" ""
+customPP = defaultPP { ppCurrent = xmobarColor "#66A9BA" "" . wrap "<" ">"
+                     , ppHidden = xmobarColor "#B3B3B3" "" . wrap "" "²"
+                     , ppHiddenNoWindows = xmobarColor "#B3B3B3" ""
                      , ppUrgent = xmobarColor "#FFFFAF" "" . wrap "[" "]" 
-                     , ppLayout = xmobarColor "#C9A34E" ""
-                     , ppTitle =  xmobarColor "#C9A34E" "" . shorten 80
+                     , ppLayout = xmobarColor "#B3B3B3" ""
+                     , ppTitle =  xmobarColor "#B3B3B3" "" . shorten 80
                      , ppSep = xmobarColor "#429942" "" " | "
                      }
 
@@ -97,7 +97,7 @@ tabTheme1 = defaultTheme { decoHeight = 16
                          }
 
 -- workspaces
-workspaces' = ["1:www", "2:dev", "3:im", "4:aud", "5:vid", "6:mail", "7:off", "8", "9:tor"]
+workspaces' = ["1:www", "2:dev", "3:im", "4:soc", "5:a/v", "6:mail", "7", "8:wine", "9:tor"]
 
 -- layouts
 layoutHook' = tile ||| mtile ||| tab ||| full
@@ -131,8 +131,8 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, xK_c     ), kill)
     , ((modMask .|. shiftMask, xK_i	), spawn "tkabber")
     , ((modMask,               xK_c	), spawn "chromium")
-    , ((modMask,               xK_w	), spawn "weechat-curses")
-    , ((modMask,               xK_Print ), spawn "/usr/bin/screenshot scr")
+    , ((modMask,               xK_w	), spawn "urxvt -e weechat-curses")
+    , ((modMask,               xK_Print ), spawn "screenshot scr")
 
     -- grid
     , ((modMask,               xK_g     ), goToSelected defaultGSConfig)
