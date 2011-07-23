@@ -1,6 +1,6 @@
 *background: #fdf6e3
 *foreground: #839496
-*fading: 40
+!!*fading: 40
 *fadeColor: #fdf6e3
 *cursorColor: #586e75
 *pointerColorBackground: #93a1a1
