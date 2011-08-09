@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- xmonad.hs for xmonad-darcs (works for "stable" xmonad at archlinux)
+-- xmonad.hs for xmonad-darcs (works for "stable" xmonad at Arch Linux)
 -- Author: Øyvind 'Mr.Elendig' Heggstad <mrelendig AT har-ikkje DOT net>
 -- Dmitry 'Zetoke' Ermakov <zetoke AT ya DOT ru>
 -------------------------------------------------------------------------------
@@ -28,6 +28,12 @@ import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.Named
 import XMonad.Layout.Tabbed
+import XMonad.Layout.IM
+import XMonad.Layout.StackTile
+import XMonad.Layout.Grid
+
+-- utills
+import XMonad.Util.Scratchpad
 
 -------------------------------------------------------------------------------
 -- Main --
@@ -50,7 +56,7 @@ myConfig = defaultConfig { workspaces = workspaces'
                          , terminal = terminal'
                          , keys = keys'
                          , layoutHook = layoutHook'
-                         , manageHook = floatNextHook <+> manageHook'
+                         , manageHook = floatNextHook <+> manageHook' <+> manageScratchpad
                          }
 
 -------------------------------------------------------------------------------
@@ -59,7 +65,7 @@ manageHook' = composeAll . concat $
 	[ [ isFullscreen		--> doFullFloat ]
 	, [ className	=? c 		--> doFloat | c <- myFloats ]
 	, [ className	=? r 		--> doIgnore | r <- myIgnores ]
-	, [ className	=? "Chrome" 	--> doShift "1:www" ]
+	, [ className	=? "Chromium" 	--> doShift "1:www" ]
 	, [ className	=? "Tkabber" 	--> doShift "3:im" ]
 	, [ insertPosition Below Newer ]
 	, [ transience' ]
@@ -69,6 +75,14 @@ manageHook' = composeAll . concat $
 		myFloats	= ["MPlayer", "Gimp", "Pidgin", "Skype", "Idjcgui.py", "Qjackctl"]
 		myIgnores	= ["trayer"]
 -------------------------------------------------------------------------------
+
+manageScratchpad = scratchpadManageHook (W.RationalRect l t w h)
+  where
+    h = 0.15
+    w = 1
+    t = 1 - h
+    l = 1 - w
+
 -- Looks --
 -- bar
 customPP = defaultPP { ppCurrent = xmobarColor "#66A9BA" "" . wrap "<" ">"
@@ -97,7 +111,7 @@ tabTheme1 = defaultTheme { decoHeight = 16
                          }
 
 -- workspaces
-workspaces' = ["1:www", "2:dev", "3:im", "4:soc", "5:a/v", "6:mail", "7", "8:wine", "9:tor"]
+workspaces' = ["1:www", "2:dev", "3:im", "4:soc", "5:a/v", "6:mail", "7:misc", "8:wine", "9:tor"]
 
 -- layouts
 layoutHook' = tile ||| mtile ||| tab ||| full
@@ -111,6 +125,7 @@ layoutHook' = tile ||| mtile ||| tab ||| full
 -------------------------------------------------------------------------------
 -- Terminal --
 terminal' = "urxvt"
+myTerminal = "urxvt"
 
 -------------------------------------------------------------------------------
 -- Keys/Button bindings --
@@ -125,13 +140,14 @@ keys' :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- launching and killing programs
     [ ((modMask,               xK_Return), spawn $ XMonad.terminal conf) 
-    , ((modMask,               xK_p     ), spawn "dmenu_run") 
+    , ((modMask,               xK_p     ), spawn "dmenu_run -nb '#222222' -nf '#aaaaaa' -sb '#93d44f' -sf '#222222'") 
     , ((modMask .|. shiftMask, xK_p     ), spawn "gmrun")
     , ((modMask .|. shiftMask, xK_m     ), spawn "claws-mail")
     , ((modMask .|. shiftMask, xK_c     ), kill)
     , ((modMask .|. shiftMask, xK_i	), spawn "tkabber")
     , ((modMask,               xK_c	), spawn "chromium")
     , ((modMask,               xK_w	), spawn "urxvt -e weechat-curses")
+    , ((modMask,               xK_e ), scratchpadSpawnActionTerminal "urxvt")
     , ((modMask,               xK_Print ), spawn "screenshot scr")
 
     -- grid
@@ -141,7 +157,7 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask,               xK_space ), sendMessage NextLayout)
     , ((modMask .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
 
-    -- floating layer stuff
+    -- floating layer stuff))
     , ((modMask,               xK_t     ), withFocused $ windows . W.sink)
 
     -- refresh
@@ -176,7 +192,7 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
 
     -- floatNext
-    , ((modMask		     , xK_e	), toggleFloatAllNew)
+--    , ((modMask		     , xK_e	), toggleFloatAllNew)
     ]
 
     ++
