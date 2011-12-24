@@ -1,4 +1,4 @@
-Config { font = "xft:Droid Sans Mono:size=8"
+Config { font = "-*-terminus-medium-*-*-*-12-*-*-*-*-*-*-u"
        , bgColor = "#202020"
        , fgColor = "#b3b3b3"
        , position = TopW L 95 

@@ -4,7 +4,7 @@
 !Xft.hinting:		true
 !Xft.hintstyle: 	hintslight
 !Xft.rgba:		none
-!Xft.dpi:		96 
+Xft.dpi:		96 
 !Xft.lcdfilter:		lcdnone
 !}
 
@@ -58,18 +58,20 @@ URXvt*mouseWheelScrollPage:false
 !}
 
 !URxvt Fonts {
-!URxvt*font:			-*-terminus-medium-*-*-*-17-*-*-*-*-*-*-u
+!URxvt*font:			-*-terminus-medium-*-*-*-14-*-*-*-*-*-*-u
 !URxvt.boldFont:		-*-terminus-bold-*-*-*-14-*-*-*-*-*-*-u
-!URxvt*font:			xft:Droid Sans Mono:size=10
-!URxvt*font:            xft:Dejavu Sans Mono:size=10
-URxvt*font:			xft:Liberation Mono:pixelsize=14
+!URxvt*font:			xft:Droid Sans Mono:size=11
+!URxvt*font:            xft:Dejavu Sans Mono:size=12
+!URxvt*font:			xft:Liberation Mono:pixelsize=15
+URxvt*font:             xft:Ubuntu Mono:size=13
 !}
 
 !URxvt Color Settings {
 ! Color Scheme
 !#include "/home/zetoke/.xcolors/librec00kiez"
 !#include "/home/zetoke/.xcolors/solarized_light"
-#include "/home/zetoke/.xcolors/solarized_dark"
+!#include "/home/zetoke/.xcolors/solarized_dark"
+#include "/home/zetoke/.xcolors/Tommorow_Night"
 URxvt*depth:32
 URxvt*dynamicColors:on
 

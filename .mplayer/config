@@ -1,13 +1,15 @@
+[default]
 # Write your default config options here!
 subcp = enca:ru:utf8
-nfig=1
-font='Droid Sans'
-ass-color=ffff0000
-ass-border-color=00000000
-subpos=60
-subfont-autoscale=3
-subfont-osd-scale=3
-ass-font-scale=2
+ass = 1
+#nfig=1
+#font='Droid Sans'
+#ass-color=ffff0000
+#ass-border-color=00000000
+#subpos=60
+#subfont-autoscale=3
+#subfont-osd-scale=3
+#ass-font-scale=2
 ao=alsa
 vo=xv
 alang=jpn,ja,eng,en,rus,ru
